@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TextInput, Text, Button } from "react-native";
 
-const PassionMoonPercentage = props => {
+const PassionMoonPercentage = (props) => {
   return (
     <View>
       <View>
@@ -14,16 +14,16 @@ const PassionMoonPercentage = props => {
         title="Finish"
         onPress={() => {
           console.log("moving to Home screen");
-          props.navigation.navigate("HomeScreen");
+          props.navigation.replace("HomeScreen");
         }}
       />
     </View>
   );
 };
 
-PassionMoonPercentage.navigationOptions = navigationData => {
+PassionMoonPercentage.navigationOptions = (navigationData) => {
   return {
-    headerTitle: "Passion Percentage"
+    headerTitle: "Passion Percentage",
   };
 };
 

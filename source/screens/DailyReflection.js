@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TextInput, Text, Button } from "react-native";
 
-const DailyReflection = props => {
+const DailyReflection = (props) => {
   let today = new Date().toString();
   return (
     <View>
@@ -26,9 +26,9 @@ const DailyReflection = props => {
   );
 };
 
-DailyReflection.navigationOptions = navigationData => {
+DailyReflection.navigationOptions = (navigationData) => {
   return {
-    headerTitle: "Daily Reflect"
+    headerTitle: "Daily Reflect",
   };
 };
 

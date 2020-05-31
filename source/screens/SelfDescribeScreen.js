@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TextInput, Text, Button } from "react-native";
 
-const SelfDescribeScreen = props => {
+const SelfDescribeScreen = (props) => {
   return (
     <View>
       <View>
@@ -25,17 +25,17 @@ const SelfDescribeScreen = props => {
       <Button
         title="Next"
         onPress={() => {
-          console.log(props);
-          props.navigation.navigate("PassionMoonPercentage");
+          console.log("Go to Self Moon ");
+          props.navigation.navigate("SelfMoonPercentage");
         }}
       />
     </View>
   );
 };
 
-SelfDescribeScreen.navigationOptions = navigationData => {
+SelfDescribeScreen.navigationOptions = (navigationData) => {
   return {
-    headerTitle: "Self"
+    headerTitle: "Self",
   };
 };
 

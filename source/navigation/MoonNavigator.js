@@ -3,7 +3,7 @@ import { Platform, Text } from "react-native";
 import {
   createStackNavigator,
   createAppContainer,
-  createDrawerNavigator
+  createDrawerNavigator,
 } from "react-navigation";
 
 import Colors from "../constants/Colors";
@@ -17,65 +17,79 @@ import ConnectionsMoonPercentage from "../screens/ConnectionsMoonPercentage";
 import PassionMoonPercentage from "../screens/PassionMoonPercentage";
 import HomeScreen from "../screens/HomeScreen";
 import DailyReflection from "../screens/DailyReflection";
-import GoalCategoriesScreen from "../screens/GoalCategories";
+import FullCircleScreen from "../screens/FullCircleScreen";
+import ReadyLetsGoScreen from "../screens/ReadyLetsGoScreen";
+import WelcomeScreen from "../screens/WelcomeScreen";
+import SignUpScreen from "../screens/SignUpScreen";
+import GoalsScreen from "../screens/Goals";
+import InitiativesScreen from "../screens/InitiativesScreen";
+// import QuestionnaireScreen from "../screens/QuestionnaireScreen";
+
+// import GoalCategoriesScreen from "../screens/GoalCategoriesScreen";
 
 const defaultStackNavOptions = {
   headerStyle: {
-    backgroundColor: Platform.OS === "android" ? Colors.primaryColor : ""
+    backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
   },
   headerTitleStyle: {
-    fontFamily: "open-sans-bold"
+    fontFamily: "open-sans-bold",
   },
   headerTintColor: Platform.OS === "android" ? "white" : Colors.primaryColor,
-  headerTitle: "A Screen"
+  headerTitle: "A Screen",
 };
 
 const ReflectionNavigator = createStackNavigator(
   {
-    HomeScreen: HomeScreen,
+    WelcomeScreen: WelcomeScreen,
     Reflection: {
-      screen: ReflectionScreen
+      screen: ReflectionScreen,
     },
+    FullCircle: FullCircleScreen,
+    ReadyLetsGo: ReadyLetsGoScreen,
+    // QuestionnaireScreen: QuestionnaireScreen,
     SelfDescribeScreen: {
-      screen: SelfDescribeScreen
+      screen: SelfDescribeScreen,
     },
     SelfMoonPercentage: {
-      screen: SelfMoonPercentage
+      screen: SelfMoonPercentage,
     },
     SelfConnectionsScreen: {
-      screen: SelfConnectionsScreen
+      screen: SelfConnectionsScreen,
     },
     PassionDescriptionScreen: {
-      screen: PassionDescriptionScreen
+      screen: PassionDescriptionScreen,
     },
     ConnectionsMoonPercentage: {
-      screen: ConnectionsMoonPercentage
+      screen: ConnectionsMoonPercentage,
     },
     PassionMoonPercentage: {
-      screen: PassionMoonPercentage
+      screen: PassionMoonPercentage,
     },
     DailyReflection: DailyReflection,
-    GoalCategoriesScreen: GoalCategoriesScreen
+    Goals: GoalsScreen,
+    Initiatives: InitiativesScreen,
+    HomeScreen: HomeScreen, // don't make this last
+    SignUpScreen: SignUpScreen, // don't make this first
+    // GoalCategoriesScreen: GoalCategoriesScreen
   },
   {
-    defaultNavigationOptions: defaultStackNavOptions
+    defaultNavigationOptions: defaultStackNavOptions,
   }
 );
 
 const Navigator = createDrawerNavigator(
   {
     Reflection: {
-      screen: ReflectionNavigator
-    }
+      screen: ReflectionNavigator,
+    },
   },
-
   {
     contentOptions: {
       activeTintColor: Colors.accentColor,
       labelStyle: {
-        fontFamily: "open-sans-bold"
-      }
-    }
+        fontFamily: "open-sans-bold",
+      },
+    },
   }
 );
 

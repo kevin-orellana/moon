@@ -1,3 +1,4 @@
+/* Application entry point */
 import React, { useState } from "react";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
@@ -7,7 +8,7 @@ import MoonNavigator from "./navigation/MoonNavigator";
 const fetchFonts = () => {
   return Font.loadAsync({
     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
-    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf")
+    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
   });
 };
 
@@ -15,6 +16,7 @@ export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
 
   if (!fontLoaded) {
+    // while fetchFonts does not resolve itself, display the expo AppLoading screen
     return (
       <AppLoading
         startAsync={fetchFonts}
