@@ -1,29 +1,49 @@
-/* Application entry point */
-import React, { useState } from "react";
-import * as Font from "expo-font";
-import { AppLoading } from "expo";
+import React, { useEffect } from "react";
+import { Text, View, Button, TextInput } from "react-native";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import MoonNavigator from "./navigation/MoonNavigator";
+const stackNavigator = createStackNavigator(); // using @react-navigation/stack"
+// Hello World app that simply shows a "Hello World" message -- launch with `npm start`
+const HelloWorldApp = () => {
+  const [textInputValue, setTextInputValue] = React.useState("Kevin!");
+  const [focusInput, setFocusInput] = React.useState(false);
+  const inputRef = React.createRef();
 
-const fetchFonts = () => {
-  return Font.loadAsync({
-    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
-    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
-  });
+  function buttonTitlePressHandler(e) {
+    console.log("focusing input");
+    setFocusInput(true);
+  }
+  return (
+    <NavigationContainer>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center", //along main axis
+          alignItems: "center", // along cross axis
+        }}
+      >
+        <Text>Hello, World</Text>
+        <TextInput
+          ref={inputRef}
+          clearButtonMode="always"
+          value={textInputValue}
+          keyboardAppearance="dark"
+          onChangeText={(text) => setTextInputValue(text)}
+        />
+        <Text>Inserted Text is: {textInputValue}</Text>
+        <Button
+          title="buttonTitle"
+          onPress={() => {
+            // important to bind onPress with arrow function
+            console.log("button pressed");
+            inputRef.current.focus(); // to focus on the keyboard with a reference
+          }}
+        />
+      </View>
+    </NavigationContainer>
+  );
 };
 
-export default function App() {
-  const [fontLoaded, setFontLoaded] = useState(false);
-
-  if (!fontLoaded) {
-    // while fetchFonts does not resolve itself, display the expo AppLoading screen
-    return (
-      <AppLoading
-        startAsync={fetchFonts}
-        onFinish={() => setFontLoaded(true)}
-      />
-    );
-  }
-
-  return <MoonNavigator />;
-}
+export default HelloWorldApp;
