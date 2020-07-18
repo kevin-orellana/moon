@@ -6,16 +6,12 @@ import {
   StyleSheet,
   ImageBackground,
 } from "react-native";
+import Colors from "../constants/Colors.js";
 
 const WelcomeScreen = (props) => {
   const { navigation } = props;
   return (
-    <View
-      style={{
-        flex: 1,
-        marginTop: 100,
-      }}
-    >
+    <View style={{ ...styles.screens, ...styles.background }}>
       <Text
         style={{
           fontSize: 20,
@@ -55,6 +51,13 @@ const WelcomeScreen = (props) => {
 };
 
 const styles = StyleSheet.create({
+  screens: {
+    flex: 1,
+    marginTop: 100,
+  },
+  background: {
+    backgroundColor: Colors.backgroundColorS,
+  },
   container: {
     width: "100%",
   },
